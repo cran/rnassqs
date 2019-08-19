@@ -1,3 +1,22 @@
+# rnassqs 0.5.0
+
+- approval for rOpensci inclusion!
+- additional testing to improve code coveral by @nealrichardson
+- small changes for rOpensci review process
+- switch to rOpensci repository
+- Change in syntax to allow for lower case query parameter values
+- Change in syntax to allow for specifying each parameter as a separate function argument rather than as a single list (in addition to specifying a single list)
+- Create package website with pkgdown
+- Standardize code style in package code, examples, and vignette
+- Simplify authentication
+- Expanded test coverage with use of httptest::with_mock_api()
+- Better clarification in documentation and documentation examples
+- Improved README and vignette
+
+# rnassqs 0.4.0.9000
+
+- Development version
+
 # rnassqs 0.4.0
 
 - Add automated unit tests that work locally and others that work on CRAN.

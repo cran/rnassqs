@@ -5,6 +5,11 @@ knitr::opts_chunk$set(
 )
 
 ## ------------------------------------------------------------------------
+library(rnassqs)
+
 # returns a list of fields that you can query
-rnassqs::nassqs_fields()
+nassqs_params()
+
+## ------------------------------------------------------------------------
+nassqs_params("agg_level_desc", "source_desc")
 
