@@ -1,29 +1,20 @@
 context("test HTTP GET related functions")
 
-# Parameters
-params <- list(
-  commodity_desc = "CORN",
-  year = "2012",
-  agg_level_desc = "STATE",
-  statisticcat_desc = "AREA HARVESTED",
-  domaincat_desc = "NOT SPECIFIED",
-  state_alpha = "VA"
-)
-
-lower_params <- list(
-  commodity_desc = "corn",
-  year = "2012",
-  agg_level_desc = "state",
-  statisticcat_desc = "area harvested",
-  domaincat_desc = "not specified",
-  state_alpha = "va"
-)
-
 ### Test API URLs with mock APIs ----
-
 with_mock_api({
-  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=JSON"
+  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=AREA%20HARVESTED&year=2012&format=CSV"
 
+  test_that("nassqs forms a correct URL when using specific parameters", {
+    expect_GET(
+      nassqs(commodity_desc = "CORN",
+             year = "2012",
+             agg_level_desc = "STATE",
+             statisticcat_desc = "AREA HARVESTED",
+             domaincat_desc = "NOT SPECIFIED",
+             state_alpha = "VA"), 
+      url = expected_url)
+  })
+  
   test_that("nassqs forms a correct URL", {
     expect_GET(nassqs(params), url = expected_url)
   })
@@ -32,33 +23,9 @@ with_mock_api({
     expect_GET(nassqs_GET(params), url = expected_url)
   })
 
+  lower_params <- lapply(params, function(x) { tolower(x) })
   test_that("nassqs_GET() works with lower case values", {
     expect_GET(nassqs(lower_params), url = expected_url)
-  })
-
-  test_that("Too-large request error is handled", {
-    p2 <- params
-    p2$year <- 2013
-    expect_error(
-      nassqs(p2),
-      "Request was too large. NASS requires that an API call returns a max"
-    )
-  })
-
-  test_that("Other server error is handled", {
-    p3 <- params
-    p3$year <- 2102
-    expect_error(
-      nassqs(p3),
-      "HTTP Failure: 404"
-    )
-  })
-
-  test_that("Invalid format is handled", {
-    expect_error(
-      nassqs(format = "png"),
-      "Your query parameters include 'format' as png"
-    )
   })
 })
 
@@ -97,14 +64,20 @@ with_authentication({
     expect_is(d, "data.frame")
     expect_equal(ncol(d), 39)
   })
+  
+  test_that("Too-large request error is handled", {
+    expect_error(
+      nassqs(year__GE = 2000),
+      "Request was too large. NASS requires that an API call returns a maximum")
+  })
 
-  test_that("nassqs_parse successfully parses CSV data", {
-    csv_params <- params
-    csv_params[['format']] <- "csv"
-    req <- nassqs_GET(csv_params)
-    d <- nassqs_parse(req)
-    expect_is(d, "data.frame")
-    expect_equal(ncol(d), 39)
+  test_that("Other server error is handled", {
+    p3 <- params
+    p3$year <- 2102
+    expect_error(
+      nassqs(p3),
+      "HTTP Failure: 400"
+    )
   })
 })
 
@@ -118,6 +91,17 @@ test_that("nassqs_GET returns error if no authentication provided in non-interac
                fixed = TRUE)
 })
 
+test_that("nassqs_GET returns error if a parameter is invalid", {
+  expect_error(nassqs(year_GE = 2017),
+               "Parameter 'year_GE' is not a valid parameter. Use `nassqs_params()`
+    for a list of valid parameters",
+            fixed = TRUE)
+
+  expect_error(nassqs(county_fips = 2017),
+               "Parameter 'county_fips' is not a valid parameter. Use `nassqs_params()`
+    for a list of valid parameters",
+            fixed = TRUE)
+})
 
 ## Test for data type processing and response parsing
 

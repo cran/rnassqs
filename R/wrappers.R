@@ -9,7 +9,7 @@
 #'   form the query
 #' @return integer that is the number of records that are returned from the 
 #'   API in response to the query
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Check the number of records returned for corn in 1995, Washington state
 #'   params <- list(
 #'     commodity_desc = "CORN",
@@ -22,6 +22,13 @@
 #'   records  # returns 17
 #' }
 nassqs_record_count <- function(...) {
+
+  # Get parameters
+  params <- expand_list(...)
+
+  # Check that names of the parameters are in the valid parameter list
+  chk_params <- lapply(names(params), function(x) { parameter_is_valid(x) })
+
   nassqs_parse(nassqs_GET(..., api_path = "get_counts"))
 }
 
@@ -35,7 +42,7 @@ nassqs_record_count <- function(...) {
 #' @param ... either a named list of parameters or a series of parameters to 
 #'   form the query
 #' @return a data.frame of yields data
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Get yields for wheat in 2012, all geographies
 #'   params <- list(
 #'     commodity_desc = "WHEAT", 
@@ -43,7 +50,7 @@ nassqs_record_count <- function(...) {
 #'     agg_level_desc = "STATE",
 #'     state_alpha = "WA")
 #'     
-#'   yields <- nassqs_yield(params)
+#'   yields <- nassqs_yields(params)
 #'   head(yields)
 #' }
 nassqs_yields <- function(...) {
@@ -60,7 +67,7 @@ nassqs_yields <- function(...) {
 #'   form the query
 #' @param area the type of area to return. Default is all types.
 #' @return a data.frame of acres data
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Get Area bearing for Apples in Washington, 2012.
 #'   params <- list(
 #'     commodity_desc = "APPLES",
@@ -68,7 +75,7 @@ nassqs_yields <- function(...) {
 #'     state_name = "WASHINGTON",
 #'     agg_level_desc = "STATE"
 #'   )
-#'   area <- nassqs_area(params, area = "AREA BEARING")
+#'   area <- nassqs_acres(params, area = "AREA BEARING")
 #'   head(area)
 #' }
 nassqs_acres <- function(...,

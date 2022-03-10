@@ -4,15 +4,17 @@
 \alias{nassqs_parse}
 \title{Parse a response object from \code{nassqs_GET()}.}
 \usage{
-nassqs_parse(req, as = c("data.frame", "list", "text"), ...)
+nassqs_parse(req, as_numeric = TRUE, as = c("data.frame", "list", "text"), ...)
 }
 \arguments{
 \item{req}{the GET response from \code{\link[=nassqs_GET]{nassqs_GET()}}}
 
+\item{as_numeric}{whether to convert values to numeric format.}
+
 \item{as}{whether to return a data.frame, list, or text string}
 
 \item{...}{additional parameters passed to \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} or
-\code{\link[utils:read.csv]{utils::read.csv()}}}
+\code{\link[utils:read.table]{utils::read.csv()}}}
 }
 \value{
 a data frame, list, or text string of the content from the response.
@@ -25,9 +27,9 @@ Converting the value to a numerical results in NA, which loses that
 information.
 }
 \examples{
-\donttest{
+\dontrun{
   # Set parameters and make the request
-  params <- list(commodity_name = "CORN",
+  params <- list(commodity_desc = "CORN",
                  year = 2012,
                  agg_level_desc = "STATE",
                  state_alpha = "WA",
