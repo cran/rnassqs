@@ -178,7 +178,7 @@ nassqs <- function(...,
 #'
 #' This is the workhorse of the package that provides the core request
 #' functionality to the NASS 'Quick Stats' API:
-#' [https://quickstats.nass.usda.gov/api](https://quickstats.nass.usda.gov/api).
+#' [https://quickstats.nass.usda.gov/api/](https://quickstats.nass.usda.gov/api/).
 #' In most cases [nassqs()] or other high-level functions should be used.
 #' `nassqs_GET()` uses [httr::GET()] to make a HTTP GET request, which returns a
 #' request object which must then be parsed to a data.frame, list, or other `R`
@@ -267,8 +267,6 @@ nassqs_GET <- function(...,
 
   # full url
   url <- paste0("https://quickstats.nass.usda.gov/api/", api_path)
-  u <- httr::parse_url(url)
-  u$query <- query
 
   if(progress_bar) {
     resp <- httr::GET(url, query = query, httr::progress())    
@@ -293,21 +291,21 @@ nassqs_GET <- function(...,
 nassqs_check <- function(response) {
   if(response$status_code < 400) {
     return(TRUE) #all good!
-  }
-  else if(response$status_code == 413) {
+  } else if(response$status_code == 413) {
     stop("Request was too large. NASS requires that an API call ",
          "returns a maximum of 50,000 records. Consider subsetting ",
          "your request by geography or year to reduce the size of ",
-         "your query.", call. = FALSE)
-  }
-  else {
-    stop("HTTP Failure: ",
+         "your query.", 
+         call. = FALSE)
+  } else if(response$status_code == 429) {
+    stop("Too many requests are being made. Consider slowing the ",
+         "pace of your requests or try again later.", 
+         call. = FALSE)
+  } else if(httr::http_error(response)) {
+    stop("HTTP error code: ",
          response$status_code,
          "\n",
-         jsonlite::fromJSON(httr::content(response,
-                                          as = "text",
-                                          type = "text/json",
-                                          encoding = "UTF-8")),
+         httr::content(response, as = "text", encoding = "UTF-8"),
          call. = FALSE)
   }
 }

@@ -1,3 +1,17 @@
+# rnassqs 0.6.3
+
+- Update to work with R 4.4.0
+
+# rnassqs 0.6.2
+
+- Add more testing for http errors, explicit handling of error messages other than 413 and 429.
+- Add querying by fips code with `nassqs_fips()` [Issue #30]
+- Depends on R(>= 3.5.0) since some test objects are saved in RDS format.
+
+# rnassqs 0.6.1
+
+- Explicit handling for error code 429 has been added.
+
 # rnassqs 0.6.0
 
 - The default download is CSV format instead of JSON to reduce download sizes.

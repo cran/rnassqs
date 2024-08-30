@@ -12,7 +12,7 @@
 
 <meta name="author" content="Nicholas A Potter" />
 
-<meta name="date" content="2022-03-10" />
+<meta name="date" content="2024-08-29" />
 
 <title>Using rnassqs</title>
 
@@ -31,27 +31,27 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -65,55 +65,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -122,13 +121,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -334,7 +340,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Using rnassqs</h1>
 <h4 class="author">Nicholas A Potter</h4>
-<h4 class="date">2022-03-10</h4>
+<h4 class="date">2024-08-29</h4>
 
 
 
@@ -360,11 +366,11 @@ to quickly and easily download new data.</p>
 <div id="api-information" class="section level2">
 <h2>API Information</h2>
 <p>The USDA-NASS Quick Stats API has a graphic interface here: <a href="https://quickstats.nass.usda.gov">https://quickstats.nass.usda.gov</a>.
-Information on the query parameters is found at <a href="https://quickstats.nass.usda.gov/api#param_define">https://quickstats.nass.usda.gov/api#param_define</a>.</p>
+Information on the query parameters is found at <a href="https://quickstats.nass.usda.gov/api/#param_define">https://quickstats.nass.usda.gov/api/#param_define</a>.</p>
 </div>
 <div id="a-quick-example" class="section level2">
 <h2>A quick example</h2>
-<p>First, obtain an API key from the ‘Quick Stats’ service: <a href="https://quickstats.nass.usda.gov/api">https://quickstats.nass.usda.gov/api</a>.
+<p>First, obtain an API key from the ‘Quick Stats’ service: <a href="https://quickstats.nass.usda.gov/api/">https://quickstats.nass.usda.gov/api/</a>.
 Then we can make a query. Here we request the number of farm operators
 by operation acreage in Oregon in 2012.</p>
 <pre><code>library(rnassqs)
@@ -409,12 +415,18 @@ params &lt;- list(
 # Yields and Acres
 yields &lt;- nassqs_yields(params)
 acres &lt;- nassqs_acres(params)</code></pre>
+<p>You can also query by a list of fips codes:</p>
+<pre><code>nassqs_byfips(
+  fips = c(&quot;19001&quot;, &quot;17005&quot;, &quot;17001&quot;),
+  commodity_desc = &quot;CORN&quot;,
+  year = 2019,
+  statisticcat_desc = &quot;YIELD&quot;)</code></pre>
 </div>
 <div id="detailed-usage" class="section level2">
 <h2>Detailed usage</h2>
 <div id="step-1-authentication" class="section level3">
 <h3>Step 1: Authentication</h3>
-<p>the QuickStats API requires authentication. You can get an API Key <a href="https://quickstats.nass.usda.gov/api">here</a>. Once you have a
+<p>the QuickStats API requires authentication. You can get an API Key <a href="https://quickstats.nass.usda.gov/api/">here</a>. Once you have a
 key, you can use it in any of the following ways:</p>
 <div id="add-it-to-your-.renviron-file" class="section level4">
 <h4>Add it to your .Renviron file</h4>
@@ -460,29 +472,29 @@ query. <code>rnassqs</code> tries to help navigate query building with
 some functions that return parameter names and valid values for those
 parameters. <code>nassqs_params()</code> provides the parameter names,
 which at the time of this writing are</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rnassqs)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># returns a list of fields that you can query</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nassqs_params</span>()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;agg_level_desc&quot;        &quot;asd_code&quot;              &quot;asd_desc&quot;             </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;begin_code&quot;            &quot;class_desc&quot;            &quot;commodity_desc&quot;       </span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;congr_district_code&quot;   &quot;country_code&quot;          &quot;country_name&quot;         </span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;county_ansi&quot;           &quot;county_code&quot;           &quot;county_name&quot;          </span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] &quot;domaincat_desc&quot;        &quot;domain_desc&quot;           &quot;end_code&quot;             </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] &quot;freq_desc&quot;             &quot;group_desc&quot;            &quot;load_time&quot;            </span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] &quot;location_desc&quot;         &quot;prodn_practice_desc&quot;   &quot;reference_period_desc&quot;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] &quot;region_desc&quot;           &quot;sector_desc&quot;           &quot;short_desc&quot;           </span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] &quot;state_alpha&quot;           &quot;state_ansi&quot;            &quot;state_name&quot;           </span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [28] &quot;state_fips_code&quot;       &quot;statisticcat_desc&quot;     &quot;source_desc&quot;          </span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] &quot;unit_desc&quot;             &quot;util_practice_desc&quot;    &quot;watershed_code&quot;       </span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [34] &quot;watershed_desc&quot;        &quot;week_ending&quot;           &quot;year&quot;                 </span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] &quot;zip_5&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(rnassqs)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># returns a list of fields that you can query</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">nassqs_params</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;agg_level_desc&quot;        &quot;asd_code&quot;              &quot;asd_desc&quot;             </span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;begin_code&quot;            &quot;class_desc&quot;            &quot;commodity_desc&quot;       </span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;congr_district_code&quot;   &quot;country_code&quot;          &quot;country_name&quot;         </span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; [10] &quot;county_ansi&quot;           &quot;county_code&quot;           &quot;county_name&quot;          </span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; [13] &quot;domaincat_desc&quot;        &quot;domain_desc&quot;           &quot;end_code&quot;             </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; [16] &quot;freq_desc&quot;             &quot;group_desc&quot;            &quot;load_time&quot;            </span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; [19] &quot;location_desc&quot;         &quot;prodn_practice_desc&quot;   &quot;reference_period_desc&quot;</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; [22] &quot;region_desc&quot;           &quot;sector_desc&quot;           &quot;short_desc&quot;           </span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; [25] &quot;state_alpha&quot;           &quot;state_ansi&quot;            &quot;state_name&quot;           </span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; [28] &quot;state_fips_code&quot;       &quot;statisticcat_desc&quot;     &quot;source_desc&quot;          </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; [31] &quot;unit_desc&quot;             &quot;util_practice_desc&quot;    &quot;watershed_code&quot;       </span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; [34] &quot;watershed_desc&quot;        &quot;week_ending&quot;           &quot;year&quot;                 </span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt; [37] &quot;zip_5&quot;</span></span></code></pre></div>
 <p>Including parameter names in <code>nassqs_params</code> will return a
 description of the parameter(s) in question:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nassqs_params</span>(<span class="st">&quot;agg_level_desc&quot;</span>, <span class="st">&quot;source_desc&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;agg_level_desc: Geographical level of data. Often &#39;county&#39;, &#39;state&#39;, or &#39;national&#39;, but can include other levels as well&quot;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;source_desc: Data source. Either &#39;CENSUS&#39; or &#39;SURVEY&#39;&quot;</span></span></code></pre></div>
-<p>Documentation on all of the parameters is available at <a href="https://quickstats.nass.usda.gov/api#param_define">https://quickstats.nass.usda.gov/api#param_define</a>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">nassqs_params</span>(<span class="st">&quot;agg_level_desc&quot;</span>, <span class="st">&quot;source_desc&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt; [1] &quot;agg_level_desc: Geographical level of data. Often &#39;county&#39;, &#39;state&#39;, or &#39;national&#39;, but can include other levels as well&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt; [2] &quot;source_desc: Data source. Either &#39;CENSUS&#39; or &#39;SURVEY&#39;&quot;</span></span></code></pre></div>
+<p>Documentation on all of the parameters is available at <a href="https://quickstats.nass.usda.gov/api/#param_define">https://quickstats.nass.usda.gov/api/#param_define</a>.</p>
 <p>A list of the valid values for a given field is available via
 <code>nassqs_param_values(param = &lt;parameter name&gt;)</code>. For
 example,</p>
@@ -498,10 +510,10 @@ the end takes the form of a list of parameters that looks like</p>
 <pre><code>params &lt;- list(commodity_desc = &quot;CORN&quot;, year__GE = 2012, state_alpha = &quot;VA&quot;)</code></pre>
 <div id="querying-a-range-of-values" class="section level4">
 <h4>Querying a range of values</h4>
-<p>Most queries will probably be for specific values such as <code>year
-= 2012</code>, but you may also want to query ranges of values. For
-those queries, append one of the following to the field you’d like to
-modify:</p>
+<p>Most queries will probably be for specific values such as
+<code>year = 2012</code>, but you may also want to query ranges of
+values. For those queries, append one of the following to the field
+you’d like to modify:</p>
 <ul>
 <li>__LE: less than or equal</li>
 <li>__LT: less than</li>
@@ -520,8 +532,8 @@ equal to 2012.</p>
 <h4>Querying multiple values</h4>
 <p>Multiple values can be queried at once by including them in a simple
 list with <code>c()</code>. For example, if you’d like data from both
-Washington and Oregon, you can write <code>state_alpha = c(&#39;WA&#39;,
-&#39;OR&#39;)</code>.</p>
+Washington and Oregon, you can write
+<code>state_alpha = c(&#39;WA&#39;, &#39;OR&#39;)</code>.</p>
 </div>
 <div id="query-limits" class="section level4">
 <h4>Query limits</h4>

@@ -6,6 +6,7 @@ test_that("nassqs_record_count performs parameter validation", {
   expect_error(
     nassqs_record_count(setor_desc = "TEST SECTOR"), 
     "Parameter 'setor_desc' is not a valid parameter. Use `nassqs_params()`\n    for a list of valid parameters.", fixed = TRUE)
+  Sys.sleep(1)
 })
 
 
@@ -45,15 +46,33 @@ with_authentication({
   test_that("nassqs_record_count returns a numeric", {
     v <- nassqs_record_count(params)
     expect_equal(is.numeric(v$count), TRUE)
+    Sys.sleep(1)
   })
 
   test_that("nassqs_record_count takes a list of parameters", {
     v <- nassqs_record_count(params)
     expect_equal(is.numeric(v$count), TRUE)
+    Sys.sleep(1)
   })
 
   test_that("nassqs_record_count takes parameters", {
     v <- nassqs_record_count(sector_desc = "SECTOR")
     expect_equal(is.numeric(v$count), TRUE)
+    Sys.sleep(1)
   })
+  
+  test_that("nassqs_byfips returns correct data", {
+    fips <- c("19001", "17005", "17001")
+    r <- nassqs_byfips(
+      fips = fips,
+      commodity_desc = "CORN",
+      util_practice_desc = "GRAIN",
+      year = 2019,
+      statisticcat_desc = "YIELD")
+    
+    expect_equal(unique(r$year), "2019")
+    expect_equal(sort(r$county_name), c("ADAIR", "ADAMS", "BOND"))
+    expect_equal(sort(r$state_name), c("ILLINOIS", "ILLINOIS", "IOWA"))
+  })
+  
 })

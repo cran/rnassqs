@@ -16,19 +16,23 @@ with_mock_api({
 
 with_authentication({
   test_that("nassqs_param_values returns parameter values", {
+    Sys.sleep(1)
     v = nassqs_param_values("source_desc")
     expect_is(v, "character")
     expect_is(v[[1]], "character")
-    expect_equal(nassqs_param_values("source_desc"), c("CENSUS", "SURVEY"))
+    expect_equal(v, c("CENSUS", "SURVEY"))
+    Sys.sleep(1)
     expect_equal(nassqs_param_values("SOURCE_DESC"), c("CENSUS", "SURVEY"))
+    Sys.sleep(1)
     expect_equal(nassqs_param_values(param = "SOURCE_DESC"), c("CENSUS", "SURVEY"))
   })
 
   test_that("nassqs_param_values returns parameter values filtered for other parameters", {
+    Sys.sleep(1)
     v = nassqs_param_values(param = "source_desc", year = 2012, county_name = "YAKIMA",
                             group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")
     expect_equal(v, c("CENSUS"))
-
+    Sys.sleep(1)
     expect_equal(
       nassqs_param_values(param = "county_code", year = 2012, 
                           state_alpha = "WA", agg_level_desc = "COUNTY",
